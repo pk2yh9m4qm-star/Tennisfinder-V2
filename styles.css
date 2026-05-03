@@ -101,42 +101,23 @@ body {
 
 .ambient-tennis-ball {
   position: absolute;
-  top: 112px;
-  right: 150px;
+  top: 88px;
+  right: 132px;
   z-index: 0;
-  width: 48px;
-  height: 48px;
-  opacity: 0.9;
-  filter: drop-shadow(0 14px 18px rgba(26, 62, 72, 0.18));
+  width: 82px;
+  height: 82px;
+  opacity: 0.82;
+  mix-blend-mode: screen;
+  filter: drop-shadow(0 18px 28px rgba(193, 221, 79, 0.22));
   animation: ball-float 4.8s ease-in-out infinite;
+  pointer-events: none;
 }
 
-.ambient-tennis-ball span {
+.ambient-tennis-ball img {
   display: block;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, 0.92), transparent 16%),
-    linear-gradient(135deg, #dff36d, #b8dc48 52%, #78b42f);
-  position: relative;
-  overflow: hidden;
-}
-
-.ambient-tennis-ball span::before,
-.ambient-tennis-ball span::after {
-  content: "";
-  position: absolute;
-  inset: 8px -8px;
-  border: 2px solid rgba(255, 255, 255, 0.78);
-  border-left-color: transparent;
-  border-right-color: transparent;
-  border-radius: 50%;
-  transform: rotate(33deg);
-}
-
-.ambient-tennis-ball span::after {
-  transform: rotate(213deg);
+  object-fit: contain;
 }
 
 @keyframes shell-arrive {
@@ -389,6 +370,7 @@ h3 {
 
 .filter-chip:hover,
 .time-chip:hover,
+.input-card:hover,
 .search-button:hover,
 .result-link:hover {
   transform: translateY(-1px);
@@ -431,6 +413,21 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.26);
   backdrop-filter: blur(24px) saturate(150%);
   padding: 11px 14px;
+  cursor: pointer;
+  transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.input-card:hover,
+.input-card:focus-within {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06)),
+    linear-gradient(135deg, rgba(58, 147, 168, 0.16), rgba(255, 255, 255, 0.07));
+  border-color: rgba(58, 147, 168, 0.42);
+  box-shadow:
+    0 18px 36px rgba(26, 62, 72, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    0 0 0 1px rgba(91, 168, 186, 0.1),
+    0 0 22px rgba(58, 147, 168, 0.13);
 }
 
 .input-label {
@@ -447,6 +444,7 @@ h3 {
   color: var(--text);
   padding: 0;
   outline: none;
+  cursor: pointer;
 }
 
 .search-button {
@@ -977,11 +975,11 @@ h3 {
   }
 
   .ambient-tennis-ball {
-    top: 120px;
-    right: 22px;
-    width: 34px;
-    height: 34px;
-    opacity: 0.76;
+    top: 104px;
+    right: 14px;
+    width: 58px;
+    height: 58px;
+    opacity: 0.72;
   }
 }
 
