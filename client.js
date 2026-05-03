@@ -20,6 +20,7 @@ const mapAddress = document.querySelector("#map-address");
 const mapOpenLink = document.querySelector("#map-open-link");
 
 const MIN_LOADING_MS = 900;
+const RESULT_REVEAL_DELAY_MS = 1000;
 const SOURCE_TIMEOUT_MS = 16000;
 const TIME_FILTERS = [
   { id: "before-work", label: "Vor der Arbeit", start: "07:00", end: "09:00" },
@@ -425,6 +426,7 @@ async function searchAvailability() {
     `;
     listSummary.textContent = "Suche fehlgeschlagen.";
   } finally {
+    await new Promise((resolve) => setTimeout(resolve, RESULT_REVEAL_DELAY_MS));
     setSearchingState(false);
     resultsStage.scrollIntoView({ behavior: "smooth", block: "start" });
   }
