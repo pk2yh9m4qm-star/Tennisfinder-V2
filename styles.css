@@ -101,11 +101,11 @@ body {
 
 .ambient-tennis-ball {
   position: absolute;
-  right: 22px;
-  bottom: 118px;
+  top: 112px;
+  right: 150px;
   z-index: 0;
-  width: 42px;
-  height: 42px;
+  width: 48px;
+  height: 48px;
   opacity: 0.9;
   filter: drop-shadow(0 14px 18px rgba(26, 62, 72, 0.18));
   animation: ball-float 4.8s ease-in-out infinite;
@@ -417,8 +417,8 @@ h3 {
 }
 
 .search-row {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
+  display: flex;
+  align-items: center;
   gap: 10px;
 }
 
@@ -460,6 +460,7 @@ h3 {
   border: 1px solid rgba(255, 255, 255, 0.26);
   backdrop-filter: blur(24px) saturate(150%);
   min-height: 50px;
+  width: min(100%, 232px);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -561,6 +562,17 @@ h3 {
   display: grid;
   place-items: center;
   font-size: 1.3rem;
+  animation: arrow-drift 1.55s ease-in-out infinite;
+}
+
+@keyframes arrow-drift {
+  0%,
+  100% {
+    transform: translateX(-2px);
+  }
+  50% {
+    transform: translateX(4px);
+  }
 }
 
 .helper-row {
@@ -928,12 +940,11 @@ h3 {
   }
 
   .search-row {
-    grid-template-columns: 1fr auto;
-    align-items: stretch;
+    align-items: center;
   }
 
   .search-button {
-    min-width: 138px;
+    width: 232px;
   }
 
   .featured-grid {
@@ -966,8 +977,8 @@ h3 {
   }
 
   .ambient-tennis-ball {
-    right: 16px;
-    bottom: 104px;
+    top: 120px;
+    right: 22px;
     width: 34px;
     height: 34px;
     opacity: 0.76;
@@ -979,6 +990,7 @@ h3 {
   .ambient-tennis-ball,
   .search-button::before,
   .search-button::after,
+  .search-button-arrow,
   .status-bubble .live-dot,
   .tennis-ball,
   .tennis-shadow {

@@ -5,7 +5,6 @@ const indoorToggle = document.querySelector("#toggle-indoor");
 const sourceCount = document.querySelector("#source-count");
 const sourceChips = document.querySelector("#source-chips");
 const timeFilterRow = document.querySelector("#time-filter-row");
-const searchHelper = document.querySelector("#search-helper");
 const runtimeWarning = document.querySelector("#runtime-warning");
 const loadingOverlay = document.querySelector("#loading-overlay");
 const resultsStage = document.querySelector("#results");
@@ -24,11 +23,11 @@ const TIME_FILTERS = [
   { id: "afternoon", label: "Nachmittags", start: "15:00", end: "18:00" },
   { id: "after-work", label: "Nach der Arbeit", start: "16:00", end: "19:00" },
   { id: "evening", label: "Abends", start: "18:00", end: "22:00" },
-  { id: "late", label: "Spaetabends", start: "19:00", end: "22:00" },
+  { id: "late", label: "Spätabends", start: "19:00", end: "22:00" },
 ];
 
 const uiState = {
-  selectedCourtTypes: new Set(["outdoor", "indoor"]),
+  selectedCourtTypes: new Set(),
   selectedSourceIds: new Set(),
   selectedTimeFilterIds: new Set(),
   isSearching: false,
@@ -40,7 +39,7 @@ let liveSources = [];
 
 function formatCourtTypeLabel(type) {
   if (type === "indoor") return "Drinnen";
-  if (type === "outdoor") return "Draussen";
+  if (type === "outdoor") return "Draußen";
   return "Gemischt";
 }
 
@@ -48,6 +47,7 @@ function formatSourceChipLabel(source) {
   return source.name
     .replace("Tennispark Stuttgart Outdoor", "Tennispark")
     .replace("TC Degerloch Halle", "Degerloch Halle")
+    .replace("TC Degerloch Freiplätze", "Degerloch Frei")
     .replace("TC Degerloch Freiplaetze", "Degerloch Frei");
 }
 
@@ -97,17 +97,6 @@ function renderToggleState() {
 
   searchButton.disabled = selectedCount === 0 || selectedSourceCount === 0 || uiState.isSearching;
 
-  if (selectedSourceCount === 0) {
-    searchHelper.textContent = "Keine Quelle ausgewaehlt.";
-  } else if (selectedCount === 2) {
-    searchHelper.textContent = "Alle Quellen aktiv.";
-  } else if (outdoorActive) {
-    searchHelper.textContent = "Nur draussen.";
-  } else if (indoorActive) {
-    searchHelper.textContent = "Nur drinnen.";
-  } else {
-    searchHelper.textContent = "Kein Platztyp ausgewaehlt.";
-  }
 }
 
 function renderSourceChips(data) {
@@ -231,7 +220,7 @@ function courtTypeIcon(type) {
     return `<img src="./assets/tennis-indoor.png" alt="Drinnen" />`;
   }
 
-  return `<img src="./assets/tennis-outdoor.png" alt="Draussen" />`;
+  return `<img src="./assets/tennis-outdoor.png" alt="Draußen" />`;
 }
 
 function formatStartTime(time) {
@@ -333,19 +322,19 @@ async function searchAvailability() {
   if (window.location.protocol === "file:") {
     resultsCount.textContent = "0";
     resultsSummary.textContent =
-      "Die Seite ist gerade als lokale Datei geoeffnet. Fuer Live-Ergebnisse muss die App ueber den lokalen Server laufen.";
+      "Die Seite ist gerade als lokale Datei geöffnet. Für Live-Ergebnisse muss die App über den lokalen Server laufen.";
     resultList.innerHTML = `
       <div class="empty-state">
-        Bitte oeffne die App ueber <strong>http://127.0.0.1:4173</strong> statt ueber <strong>file://</strong>.
+        Bitte öffne die App über <strong>http://127.0.0.1:4173</strong> statt über <strong>file://</strong>.
         Nur dort sind die Live-API-Endpunkte erreichbar.
       </div>
     `;
-    listSummary.textContent = "Live-Suche nur ueber den lokalen Server.";
+    listSummary.textContent = "Live-Suche nur über den lokalen Server.";
     return;
   }
 
   if (!selectedSources.length) {
-    resultsSummary.textContent = "Waehle mindestens eine Quelle und einen Platztyp fuer die Suche.";
+    resultsSummary.textContent = "Wähle mindestens eine Quelle und einen Platztyp für die Suche.";
     return;
   }
 
@@ -426,7 +415,7 @@ async function init() {
   if (window.location.protocol === "file:") {
     runtimeWarning.classList.remove("is-hidden");
     runtimeWarning.textContent =
-      "Die App ist gerade als Datei geoeffnet. Fuer echte Live-Ergebnisse musst du sie ueber http://127.0.0.1:4173 aufrufen.";
+      "Die App ist gerade als Datei geöffnet. Für echte Live-Ergebnisse musst du sie über http://127.0.0.1:4173 aufrufen.";
   }
 }
 
@@ -434,7 +423,7 @@ init().catch((error) => {
   resultsSummary.textContent = `Die App konnte nicht initialisiert werden: ${error.message}`;
   resultList.innerHTML = `
     <div class="empty-state">
-      Die Suchoberflaeche konnte nicht geladen werden. Bitte Seite neu laden.
+      Die Suchoberfläche konnte nicht geladen werden. Bitte Seite neu laden.
     </div>
   `;
 });
