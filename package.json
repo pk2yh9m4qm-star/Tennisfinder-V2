@@ -1,0 +1,8 @@
+{
+  "name": "tennis-finder-stuttgart",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=20"
+  }
+}

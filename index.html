@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tennisplatz-Finder Stuttgart</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <main class="app-shell">
+        <section class="search-stage" aria-label="Suche nach Tennisplaetzen">
+          <div class="app-topbar">
+            <div class="brand-mark" aria-hidden="true">
+              <span></span>
+              <span></span>
+            </div>
+            <div class="topbar-copy">
+              <p class="eyebrow">Tennis Finder</p>
+              <p class="topbar-meta">Stuttgart</p>
+            </div>
+            <div class="status-bubble">
+              <span class="live-dot" aria-hidden="true"></span>
+              <strong id="source-count">0</strong>
+              <span>live</span>
+            </div>
+          </div>
+
+          <div class="hero-panel">
+            <h1>Wann spielst du?</h1>
+          </div>
+
+          <section class="search-controls" aria-label="Sucheinstellungen">
+            <div id="runtime-warning" class="runtime-warning is-hidden" role="alert"></div>
+
+            <label class="input-card date-card">
+              <span class="input-label">Wann</span>
+              <input id="search-date" type="date" />
+            </label>
+
+            <div class="filter-row" role="group" aria-label="Platztyp">
+              <button
+                id="toggle-outdoor"
+                class="filter-chip is-active"
+                type="button"
+                aria-pressed="true"
+                data-court-type="outdoor"
+              >
+                Draussen
+              </button>
+
+              <button
+                id="toggle-indoor"
+                class="filter-chip is-active"
+                type="button"
+                aria-pressed="true"
+                data-court-type="indoor"
+              >
+                Drinnen
+              </button>
+            </div>
+
+            <div class="time-filter-row" id="time-filter-row" role="group" aria-label="Zeitfenster"></div>
+
+            <div class="search-row">
+              <button id="search-button" class="search-button" type="button">
+                <span class="search-button-copy">
+                  <strong>Suchen</strong>
+                </span>
+                <span class="search-button-arrow" aria-hidden="true">→</span>
+              </button>
+            </div>
+
+            <div class="helper-row">
+              <div id="source-chips" class="source-chips" aria-live="polite"></div>
+              <p id="search-helper">Alle Quellen aktiv.</p>
+            </div>
+          </section>
+        </section>
+
+        <section class="results-stage is-hidden" id="results" aria-live="polite">
+          <div class="results-heading">
+            <div>
+              <p class="eyebrow">Suchergebnis</p>
+              <h2>Freie Plaetze</h2>
+            </div>
+            <div class="results-pill">
+              <strong id="results-count">0</strong>
+              <span>Treffer</span>
+            </div>
+          </div>
+
+          <div id="loading-overlay" class="loading-overlay" hidden>
+            <div class="loading-card">
+              <div class="tennis-loader" aria-hidden="true">
+                <span class="tennis-ball"></span>
+                <span class="tennis-shadow"></span>
+              </div>
+              <p>Wir suchen freie Plaetze ...</p>
+            </div>
+          </div>
+
+          <div id="results-summary" class="results-summary">
+            Waehle einen Zeitpunkt und starte deine Suche.
+          </div>
+
+          <div class="result-list-wrap">
+            <div class="list-heading">
+              <h3>Weitere Slots</h3>
+              <p id="list-summary">Noch keine Slots geladen.</p>
+            </div>
+            <div id="result-list" class="result-list"></div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <template id="result-row-template">
+      <article class="result-row">
+        <div class="result-row-main">
+          <div class="result-row-time"></div>
+          <div class="result-row-copy">
+            <strong class="result-row-venue"></strong>
+            <span class="result-row-detail"></span>
+          </div>
+        </div>
+        <div class="result-row-side">
+          <span class="result-badge result-row-type"></span>
+          <a class="result-link result-link-inline" target="_blank" rel="noreferrer">Buchen</a>
+        </div>
+      </article>
+    </template>
+
+    <script type="module" src="./client.js"></script>
+  </body>
+</html>

@@ -1,0 +1,145 @@
+[
+  {
+    "id": "tennispark-stuttgart",
+    "name": "Tennispark Stuttgart",
+    "city": "Stuttgart",
+    "district": "Vaihingen",
+    "provider": "ebusy",
+    "bookingUrl": "https://tennispark.ebusy.de/",
+    "guestBookingStatus": "yes",
+    "courtAccess": "open",
+    "notes": "Offene Registrierung und normal beschriebener Buchungsfluss ohne klaren Mitgliederzwang auf der Startseite."
+  },
+  {
+    "id": "sportfreunde-stuttgart-1874",
+    "name": "Sportfreunde Stuttgart 1874",
+    "city": "Stuttgart",
+    "district": "Degerloch",
+    "provider": "ebusy",
+    "bookingUrl": "https://sportfreunde-stuttgart.de/abteilungen/tennis/",
+    "guestBookingStatus": "yes",
+    "courtAccess": "indoor_and_outdoor",
+    "notes": "Homepage wirbt mit Tennisplatz mieten; Tennis-Seite nennt Online-Buchung fuer Frei- und Hallenplaetze."
+  },
+  {
+    "id": "tcbw-zuffenhausen",
+    "name": "TC Blau-Weiss Zuffenhausen",
+    "city": "Stuttgart",
+    "district": "Zuffenhausen",
+    "provider": "ebusy",
+    "bookingUrl": "https://tcbw.ebusy.de/",
+    "guestBookingStatus": "partial",
+    "courtAccess": "winter_indoor_only",
+    "notes": "Drei Hallenplaetze im Winter fuer Gaeste; Aussenplaetze aktuell nur fuer Mitglieder."
+  },
+  {
+    "id": "tc-degerloch",
+    "name": "Tennishalle TC Degerloch",
+    "city": "Stuttgart",
+    "district": "Degerloch",
+    "provider": "ebusy",
+    "bookingUrl": "https://tc-degerloch.ebusy.de/court-module/567",
+    "guestBookingStatus": "yes",
+    "courtAccess": "indoor_and_outdoor",
+    "notes": "Oeffentliche eBuSy-Halle bestaetigt; zusaetzlich existiert eine oeffentliche Freiplatz-Belegung ueber lite-module/223."
+  },
+  {
+    "id": "tec-waldau",
+    "name": "Tennis- und Eislauf-Club Waldau",
+    "city": "Stuttgart",
+    "district": "Degerloch",
+    "provider": "eversports",
+    "bookingUrl": "https://www.eversports.de/s/tennis-und-eislauf-club-waldau-e-v",
+    "guestBookingStatus": "yes",
+    "courtAccess": "open",
+    "notes": "Oeffentliches Eversports-Profil mit Book-Now-Seite."
+  },
+  {
+    "id": "top-tennis-stuttgart",
+    "name": "Top Tennis Stuttgart",
+    "city": "Ostfildern",
+    "district": null,
+    "provider": "ebusy",
+    "bookingUrl": "https://toptennis-stuttgart.ebusy.de/court-module/2163",
+    "guestBookingStatus": "yes",
+    "courtAccess": "indoor_and_outdoor",
+    "notes": "Oeffentliche eBuSy-Tagesansicht bestaetigt. Im Modul sichtbar: Indoor- und Outdoor-Tennisplaetze mit Buchungsraster. Live-Integration lokal noch blockiert, weil der Host in dieser Runtime derzeit nicht aufgeloest wird."
+  },
+  {
+    "id": "tc-chaos-stuttgart",
+    "name": "Tennis-Club Chaos Stuttgart",
+    "city": "Stuttgart",
+    "district": null,
+    "provider": "eversports",
+    "bookingUrl": "https://www.eversports.de/s/tennis-club-chaos-stuttgart-e-v",
+    "guestBookingStatus": "open",
+    "courtAccess": "open",
+    "notes": "Oeffentliches Profil vorhanden, Gastlogik noch nicht verifiziert."
+  },
+  {
+    "id": "tennisclub-sonnenberg-blue-lobers",
+    "name": "Tennisclub Sonnenberg-Blue-Lobers Stuttgart",
+    "city": "Stuttgart",
+    "district": null,
+    "provider": "eversports",
+    "bookingUrl": "https://www.eversports.de/s/tennisclub-sonnenberg-blue-lobers-stuttgart-e-v",
+    "guestBookingStatus": "open",
+    "courtAccess": "open",
+    "notes": "Oeffentliches Profil vorhanden, Gastlogik noch nicht verifiziert."
+  },
+  {
+    "id": "weiss-rot-stuttgart",
+    "name": "Tennisclub Weiss-Rot Stuttgart",
+    "city": "Stuttgart",
+    "district": "West",
+    "provider": "mixed",
+    "bookingUrl": "https://www.eversports.de/s/tennisclub-weiss-rot-stuttgart-ev",
+    "guestBookingStatus": "open",
+    "courtAccess": "open",
+    "notes": "Oeffentliche Profile in Eversports und GotCourts sichtbar; Gastbuchung noch nicht sicher."
+  },
+  {
+    "id": "cannstatter-tc",
+    "name": "Cannstatter Tennis-Club",
+    "city": "Stuttgart",
+    "district": "Bad Cannstatt",
+    "provider": "eversports",
+    "bookingUrl": "https://www.eversports.de/s/cannstatter-tennis-club-e-v",
+    "guestBookingStatus": "open",
+    "courtAccess": "open",
+    "notes": "Oeffentliches Profil vorhanden, Gastlogik noch nicht verifiziert."
+  },
+  {
+    "id": "tennisanlage-sonnenberg",
+    "name": "Tennisanlage Sonnenberg",
+    "city": "Stuttgart",
+    "district": "Degerloch",
+    "provider": "eversports",
+    "bookingUrl": "https://www.eversports.de/s/tennisanlage-sonnenberg",
+    "guestBookingStatus": "open",
+    "courtAccess": "open",
+    "notes": "Oeffentliches Profil vorhanden, Gastlogik noch nicht verifiziert."
+  },
+  {
+    "id": "tus-stuttgart-1867",
+    "name": "tus Stuttgart 1867",
+    "city": "Stuttgart",
+    "district": null,
+    "provider": "gotcourts",
+    "bookingUrl": "https://www.tus-stuttgart.de/courtonline.html",
+    "guestBookingStatus": "no",
+    "courtAccess": "member_with_guest_only",
+    "notes": "Gaeste nur mit Mitglied; zwei Vereinsfremde koennen nicht buchen."
+  },
+  {
+    "id": "kv95",
+    "name": "KV95",
+    "city": "Stuttgart",
+    "district": null,
+    "provider": "ebusy",
+    "bookingUrl": "https://www.kv95.de/platz-und-spielordnung",
+    "guestBookingStatus": "no",
+    "courtAccess": "member_with_guest_only",
+    "notes": "Gastspieler duerfen laut Platzordnung nur mit aktiven Mitgliedern spielen."
+  }
+]

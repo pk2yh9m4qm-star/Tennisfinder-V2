@@ -1,0 +1,26 @@
+[
+  {
+    "id": "tennispark-stuttgart-outdoor",
+    "name": "Tennispark Stuttgart Outdoor",
+    "provider": "ebusy",
+    "venueId": "tennispark-stuttgart",
+    "courtType": "outdoor",
+    "moduleUrl": "https://tennispark.ebusy.de/stuttgartoutdoor"
+  },
+  {
+    "id": "tc-degerloch-indoor",
+    "name": "TC Degerloch Halle",
+    "provider": "ebusy",
+    "venueId": "tc-degerloch",
+    "courtType": "indoor",
+    "moduleUrl": "https://tc-degerloch.ebusy.de/court-module/567"
+  },
+  {
+    "id": "tc-degerloch-outdoor",
+    "name": "TC Degerloch Freiplaetze",
+    "provider": "ebusy",
+    "venueId": "tc-degerloch",
+    "courtType": "outdoor",
+    "moduleUrl": "https://tc-degerloch.ebusy.de/lite-module/223"
+  }
+]
