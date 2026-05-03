@@ -163,10 +163,18 @@ function findVenueById(venueId) {
   return venues.find((venue) => venue.id === venueId);
 }
 
+function buildBookingUrl(baseUrl, currentDate) {
+  if (!baseUrl || baseUrl === "#") return "#";
+
+  const url = new URL(baseUrl);
+  url.searchParams.set("currentDate", currentDate);
+  return url.toString();
+}
+
 function normalizeResults(payloads) {
   return payloads.flatMap((payload) => {
     const venue = findVenueById(payload.venueId);
-    const bookingUrl = venue?.bookingUrl || payload.moduleUrl || "#";
+    const bookingUrl = buildBookingUrl(payload.moduleUrl || venue?.bookingUrl, payload.currentDate);
     const city = venue?.city || "Stuttgart";
     const district = venue?.district || "Umgebung";
     const groupedCount = payload.freeSlots.length;
