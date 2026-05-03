@@ -11,7 +11,7 @@
       <main class="app-shell">
         <section class="search-stage" aria-label="Suche nach Tennisplätzen">
           <div class="ambient-tennis-ball" aria-hidden="true">
-            <img src="./assets/tennis-ball-glow.png" alt="" />
+            <span></span>
           </div>
 
           <div class="app-topbar">
@@ -128,11 +128,34 @@
           </div>
         </div>
         <div class="result-row-side">
+          <button class="map-pin-button" type="button" aria-label="Location auf Karte anzeigen">
+            <span aria-hidden="true">⌖</span>
+          </button>
           <span class="result-badge result-row-type"></span>
           <a class="result-link result-link-inline" target="_blank" rel="noreferrer">Buchen</a>
         </div>
       </article>
     </template>
+
+    <div id="map-modal" class="map-modal" hidden>
+      <div class="map-modal-backdrop" data-map-close></div>
+      <section class="map-card" role="dialog" aria-modal="true" aria-labelledby="map-title">
+        <button class="map-close-button" type="button" data-map-close aria-label="Karte schließen">×</button>
+        <div class="map-card-copy">
+          <p class="eyebrow">Location</p>
+          <h3 id="map-title">Tennisplatz</h3>
+          <p id="map-address">Stuttgart</p>
+        </div>
+        <iframe
+          id="map-frame"
+          class="map-frame"
+          title="Kartenansicht"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+        <a id="map-open-link" class="map-open-link" target="_blank" rel="noreferrer">In Maps öffnen</a>
+      </section>
+    </div>
 
     <script type="module" src="./client.js"></script>
   </body>

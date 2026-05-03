@@ -13,6 +13,11 @@ const resultsSummary = document.querySelector("#results-summary");
 const resultList = document.querySelector("#result-list");
 const listSummary = document.querySelector("#list-summary");
 const resultRowTemplate = document.querySelector("#result-row-template");
+const mapModal = document.querySelector("#map-modal");
+const mapFrame = document.querySelector("#map-frame");
+const mapTitle = document.querySelector("#map-title");
+const mapAddress = document.querySelector("#map-address");
+const mapOpenLink = document.querySelector("#map-open-link");
 
 const MIN_LOADING_MS = 900;
 const SOURCE_TIMEOUT_MS = 16000;
@@ -160,6 +165,12 @@ function buildBookingUrl(baseUrl, currentDate) {
   return url.toString();
 }
 
+function buildLocationQuery(venue, fallbackName) {
+  return [venue?.name || fallbackName, venue?.district, venue?.city || "Stuttgart"]
+    .filter(Boolean)
+    .join(", ");
+}
+
 function normalizeResults(payloads) {
   return payloads.flatMap((payload) => {
     const venue = findVenueById(payload.venueId);
@@ -167,6 +178,7 @@ function normalizeResults(payloads) {
     const city = venue?.city || "Stuttgart";
     const district = venue?.district || "Umgebung";
     const groupedCount = payload.freeSlots.length;
+    const mapQuery = buildLocationQuery(venue, payload.sourceName);
 
     return payload.freeSlots.map((slot) => ({
       sourceId: payload.sourceId,
@@ -177,6 +189,7 @@ function normalizeResults(payloads) {
       bookingUrl,
       city,
       district,
+      mapQuery,
       date: payload.currentDate,
       dateIso: slot.date.split("/").reverse().join("-"),
       start: slot.start,
@@ -227,6 +240,33 @@ function formatStartTime(time) {
   return time.replace(":00", " Uhr").replace(":", ".");
 }
 
+function buildMapEmbedUrl(query) {
+  return `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`;
+}
+
+function buildMapOpenUrl(query) {
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(query)}`;
+}
+
+function openLocationMap(result) {
+  if (!mapModal || !mapFrame || !mapTitle || !mapAddress || !mapOpenLink) return;
+
+  mapTitle.textContent = result.venueName;
+  mapAddress.textContent = result.mapQuery;
+  mapFrame.src = buildMapEmbedUrl(result.mapQuery);
+  mapOpenLink.href = buildMapOpenUrl(result.mapQuery);
+  mapModal.hidden = false;
+  document.body.classList.add("map-open");
+}
+
+function closeLocationMap() {
+  if (!mapModal || !mapFrame) return;
+
+  mapModal.hidden = true;
+  mapFrame.src = "";
+  document.body.classList.remove("map-open");
+}
+
 async function fetchJsonWithTimeout(url, timeoutMs) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
@@ -262,6 +302,7 @@ function renderResultRows(results) {
     fragment.querySelector(".result-row-detail").textContent =
       `${result.courtName} · ${result.city} · ${result.district}`;
     fragment.querySelector(".result-row-type").innerHTML = courtTypeIcon(result.courtType);
+    fragment.querySelector(".map-pin-button").addEventListener("click", () => openLocationMap(result));
     fragment.querySelector(".result-link-inline").href = result.bookingUrl;
     resultList.append(fragment);
   });
@@ -393,6 +434,14 @@ function registerInteractions() {
   outdoorToggle.addEventListener("click", () => toggleCourtType("outdoor"));
   indoorToggle.addEventListener("click", () => toggleCourtType("indoor"));
   searchButton.addEventListener("click", searchAvailability);
+  document.querySelectorAll("[data-map-close]").forEach((element) => {
+    element.addEventListener("click", closeLocationMap);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && mapModal && !mapModal.hidden) {
+      closeLocationMap();
+    }
+  });
 }
 
 async function init() {
