@@ -216,6 +216,10 @@ function courtTypeIcon(type) {
   return `<img src="./assets/tennis-outdoor.png" alt="Draussen" />`;
 }
 
+function formatStartTime(time) {
+  return time.replace(":00", " Uhr").replace(":", ".");
+}
+
 async function fetchJsonWithTimeout(url, timeoutMs) {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), timeoutMs);
@@ -246,7 +250,7 @@ function renderResultRows(results) {
 
   results.forEach((result) => {
     const fragment = resultRowTemplate.content.cloneNode(true);
-    fragment.querySelector(".result-row-time").textContent = `${result.start}-${result.end}`;
+    fragment.querySelector(".result-row-time").textContent = formatStartTime(result.start);
     fragment.querySelector(".result-row-venue").textContent = result.venueName;
     fragment.querySelector(".result-row-detail").textContent =
       `${result.courtName} · ${result.city} · ${result.district}`;
