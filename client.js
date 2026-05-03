@@ -208,6 +208,24 @@ function slotMatchesTimeFilters(result) {
   return selectedFilters.some((filter) => result.start >= filter.start && result.start < filter.end);
 }
 
+function dedupeResults(results) {
+  const seen = new Set();
+
+  return results.filter((result) => {
+    const key = [
+      result.sourceId,
+      result.venueName,
+      result.dateIso,
+      result.start,
+      result.courtType,
+    ].join("|");
+
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 function courtTypeIcon(type) {
   if (type === "indoor") {
     return `<img src="./assets/tennis-indoor.png" alt="Drinnen" />`;
@@ -261,7 +279,7 @@ function renderResultRows(results) {
 }
 
 function renderSearchResults(results, meta) {
-  const sortedResults = [...results].filter(slotMatchesTimeFilters).sort(sortResults);
+  const sortedResults = dedupeResults([...results].filter(slotMatchesTimeFilters).sort(sortResults));
 
   resultsCount.textContent = String(sortedResults.length);
 
