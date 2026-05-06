@@ -33,7 +33,7 @@ const TIME_FILTERS = [
 ];
 
 const uiState = {
-  selectedCourtTypes: new Set(),
+  selectedCourtTypes: new Set(["outdoor", "indoor"]),
   selectedSourceIds: new Set(),
   selectedTimeFilterIds: new Set(),
   isSearching: false,

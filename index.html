@@ -45,9 +45,9 @@
             <div class="filter-row" role="group" aria-label="Platztyp">
               <button
                 id="toggle-outdoor"
-                class="filter-chip"
+                class="filter-chip is-active"
                 type="button"
-                aria-pressed="false"
+                aria-pressed="true"
                 data-court-type="outdoor"
               >
                 Draußen
@@ -55,9 +55,9 @@
 
               <button
                 id="toggle-indoor"
-                class="filter-chip"
+                class="filter-chip is-active"
                 type="button"
-                aria-pressed="false"
+                aria-pressed="true"
                 data-court-type="indoor"
               >
                 Drinnen
@@ -127,9 +127,9 @@
             <span class="result-row-detail"></span>
           </div>
         </div>
-        <div class="result-row-side">
+          <div class="result-row-side">
           <button class="map-pin-button" type="button" aria-label="Location auf Karte anzeigen">
-            <span aria-hidden="true">⌖</span>
+            <img src="./assets/maps-pin.png" alt="" aria-hidden="true" />
           </button>
           <span class="result-badge result-row-type"></span>
           <a class="result-link result-link-inline" target="_blank" rel="noreferrer">Buchen</a>
