@@ -22,5 +22,25 @@
     "venueId": "tc-degerloch",
     "courtType": "outdoor",
     "moduleUrl": "https://tc-degerloch.ebusy.de/lite-module/223"
+  },
+  {
+    "id": "tc-weissenhof-botnang-outdoor",
+    "name": "TC Weissenhof Botnang Freiplaetze",
+    "provider": "tennis_club",
+    "venueId": "tc-weissenhof-botnang",
+    "courtType": "outdoor",
+    "bookingUrl": "https://www.tcweissenhof.de/Platzbuchung_%28Botnang%29",
+    "tvid": 3521,
+    "courtIds": [5315, 5316, 5317, 5318, 5319, 5320]
+  },
+  {
+    "id": "tc-weissenhof-botnang-indoor",
+    "name": "TC Weissenhof Botnang Halle",
+    "provider": "tennis_club",
+    "venueId": "tc-weissenhof-botnang",
+    "courtType": "indoor",
+    "bookingUrl": "https://www.tcweissenhof.de/Platzbuchung_%28Botnang%29",
+    "tvid": 3521,
+    "courtIds": [5321, 5322]
   }
 ]

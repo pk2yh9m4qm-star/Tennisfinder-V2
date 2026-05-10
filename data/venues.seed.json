@@ -66,6 +66,17 @@
     "notes": "Oeffentliche eBuSy-Tagesansicht bestaetigt. Im Modul sichtbar: Indoor- und Outdoor-Tennisplaetze mit Buchungsraster. Live-Integration lokal noch blockiert, weil der Host in dieser Runtime derzeit nicht aufgeloest wird."
   },
   {
+    "id": "tc-weissenhof-botnang",
+    "name": "TC Weissenhof Botnang",
+    "city": "Stuttgart",
+    "district": "Botnang",
+    "provider": "jalix_app",
+    "bookingUrl": "https://www.tcweissenhof.de/Platzbuchung_%28Botnang%29",
+    "guestBookingStatus": "yes",
+    "courtAccess": "indoor_and_outdoor",
+    "notes": "Platzbuchungsseite des TC Weissenhof fuer Botnang. Die Website verweist auf ein eingebettetes, app-nahes Buchungssystem der TC-Weissenhof-App von jalix design statt auf eBuSy. Als Venue/Kandidat aufgenommen; Live-Slot-Auslesung ist noch ungeklaert und braucht voraussichtlich einen neuen Connector."
+  },
+  {
     "id": "tc-chaos-stuttgart",
     "name": "Tennis-Club Chaos Stuttgart",
     "city": "Stuttgart",

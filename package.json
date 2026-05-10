@@ -1,7 +1,11 @@
 {
-  "name": "tennis-finder-stuttgart",
-  "version": "1.0.0",
+  "name": "tennisplatz-finder-stuttgart",
+  "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "dev": "node local-server.js",
+    "check": "node --check app.js && node --check local-server.js && node --check lib/ebusy.js && node --check lib/tennis-club.js && node --check api/availability.js && node --check api/live-sources.js"
+  },
   "engines": {
     "node": ">=20"
   }

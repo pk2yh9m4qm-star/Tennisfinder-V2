@@ -175,7 +175,8 @@ function buildLocationQuery(venue, fallbackName) {
 function normalizeResults(payloads) {
   return payloads.flatMap((payload) => {
     const venue = findVenueById(payload.venueId);
-    const bookingUrl = buildBookingUrl(payload.moduleUrl || venue?.bookingUrl, payload.currentDate);
+    const bookingUrl =
+      payload.bookingUrl || buildBookingUrl(payload.moduleUrl || venue?.bookingUrl, payload.currentDate);
     const city = venue?.city || "Stuttgart";
     const district = venue?.district || "Umgebung";
     const groupedCount = payload.freeSlots.length;

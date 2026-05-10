@@ -1,4 +1,5 @@
 const { getEbusyAvailability } = require("../lib/ebusy");
+const { getTennisClubAvailability } = require("../lib/tennis-club");
 const liveSources = require("../data/live-sources.json");
 
 function getQuery(req) {
@@ -19,7 +20,7 @@ module.exports = async function handler(req, res) {
     return;
   }
 
-  if (source.provider !== "ebusy") {
+  if (!["ebusy", "tennis_club"].includes(source.provider)) {
     res.status(400).json({
       error: "provider_not_supported",
       message: `Provider ${source.provider} wird noch nicht unterstuetzt`,
@@ -28,7 +29,11 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const payload = await getEbusyAvailability(source.moduleUrl, date);
+    const payload =
+      source.provider === "ebusy"
+        ? await getEbusyAvailability(source.moduleUrl, date)
+        : await getTennisClubAvailability(source, date);
+
     res.setHeader("Cache-Control", "s-maxage=30, stale-while-revalidate=120");
     res.status(200).json({
       ...payload,
@@ -36,6 +41,7 @@ module.exports = async function handler(req, res) {
       sourceName: source.name,
       courtType: source.courtType,
       venueId: source.venueId,
+      bookingUrl: source.bookingUrl,
     });
   } catch (error) {
     res.status(500).json({
